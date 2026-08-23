@@ -90,7 +90,7 @@ export const SignIn = () => {
             muted
             src='/cycling_video.mp4'
           />
-          <div className=' absolute z-50 left-10 bottom-10 w-[5%] h-auto'>
+          <div className=' absolute z-50 left-10 bottom-10 w-19.5 h-auto'>
             <img
               className=' w-full h-full'
               src='/attaque-lime.png'
