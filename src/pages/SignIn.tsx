@@ -32,9 +32,9 @@ export const SignIn = () => {
   return (
     <form
       action={handleSubmit}
-      className='flex flex-col justify-center items-center bg-panel border h-dvh'
+      className='flex justify-center items-center bg-panel border h-dvh lg:gap-5'
     >
-      <div className='flex flex-col items-center w-full p-4 gap-5 text-white'>
+      <div className='flex flex-col items-center w-[90%] xl:w-[25%] lg:m-5 p-5 gap-5 text-white'>
         <div className='flex items-center px-6 py-7'>
           <img
             className='h-auto w-15'
@@ -47,7 +47,9 @@ export const SignIn = () => {
         {/* title */}
         <h1 className='text-5xl text-accent font-semibold'>Sign in</h1>
         {/* Motto */}
-        <p className="text-lg text-gray-400">Please login to continue to your account</p>
+        <p className='text-center text-lg text-gray-400'>
+          Please login to continue to your account
+        </p>
 
         {/* Username */}
         <Input name='username' type='text' className='w-full' />
@@ -76,6 +78,26 @@ export const SignIn = () => {
         </button>
 
         {/* Google Login - Soon */}
+      </div>
+
+      {/* Video portion for 1024px and over - Desktop */}
+      <div className='max-xl:hidden flex flex-1 h-auto'>
+        <div className='h-dvh relative p-5'>
+          <video
+            className=' object-cover w-full h-full rounded-4xl'
+            autoPlay
+            loop
+            muted
+            src='/cycling_video.mp4'
+          />
+          <div className=' absolute z-50 left-10 bottom-10 w-[5%] h-auto'>
+            <img
+              className=' w-full h-full'
+              src='/attaque-lime.png'
+              alt='attaque-logo'
+            />
+          </div>
+        </div>
       </div>
     </form>
   );
