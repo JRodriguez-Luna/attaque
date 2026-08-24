@@ -1,9 +1,10 @@
 type InputVariant = 'primary' | 'secondary';
-type NameVariants = "username" | "password" | "fullName" | "email"
 
 type InputProps = {
-  name: NameVariants;
+  name: string;
   type: string;
+  label?: string;
+  placeholder?: string;
   className?: string;
   variant?: InputVariant;
   required?: boolean;
@@ -17,45 +18,45 @@ const variants: Record<
   }
 > = {
   primary: {
-    border: 'border-accent',
-    legend: 'bg-accent text-black',
+    border: 'border-lime',
+    legend: 'bg-lime text-black',
   },
   // Fix Secondary
   secondary: {
-    border: 'border-accent',
-    legend: 'bg-accent text-black',
+    border: 'border-lime',
+    legend: 'bg-lime text-black',
   },
-};
-
-const nameVariants: Record<NameVariants, string> = {
-  username: 'john.doe99',
-  email: "john.doe@example.com",
-  password: 'password',
-  fullName: 'John Doe',
 };
 
 export const Input = ({
   name,
   type,
   className = '',
+  placeholder,
+  label,
   variant = 'primary',
   required,
 }: InputProps) => {
+  const displayLabel = label ?? name.replace('_', ' '); // ex: full_name -> full name
+
   return (
     <fieldset
       className={`p-2 border rounded-xl ${variants[variant].border} ${className}`}
     >
-      <legend className={`px-1 ${variants[variant].legend} capitalize`}>{name}</legend>
-      <label htmlFor={name}>
-        <input
-          className='px-1 focus:outline-none'
-          name={name}
-          id={name}
-          type={type}
-          required={required}
-          placeholder={nameVariants[name]}
-        />
-      </label>
+      <legend
+        aria-label={displayLabel}
+        className={`px-1 ${variants[variant].legend} capitalize`}
+      >
+        {displayLabel}
+      </legend>
+      <input
+        className='px-1 focus:outline-none'
+        name={name}
+        id={name}
+        type={type}
+        required={required}
+        placeholder={placeholder}
+      />
     </fieldset>
   );
 };

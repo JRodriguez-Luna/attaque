@@ -32,12 +32,12 @@ export const SignIn = () => {
   return (
     <form
       action={handleSubmit}
-      className='flex justify-center items-center bg-panel border h-dvh lg:gap-5'
+      className='flex justify-center items-center bg-panel border h-dvh'
     >
-      <div className='flex flex-col items-center w-[90%] xl:w-[25%] lg:m-5 p-5 gap-5 text-white'>
-        <div className='flex items-center px-6 py-7'>
+      <div className='flex flex-col w-5/6 xl:w-1/4 lg:m-5 p-5 gap-5 text-white'>
+        <div className='flex justify-center items-center px-6 py-7'>
           <img
-            className='h-auto w-15'
+            className='h-auto w-14'
             src='/attaque-lime.png'
             alt='attaque logo'
           />
@@ -45,9 +45,9 @@ export const SignIn = () => {
         </div>
 
         {/* title */}
-        <h1 className='text-5xl text-accent font-semibold'>Sign in</h1>
+        <h1 className='text-5xl text-lime font-semibold'>Sign in</h1>
         {/* Motto */}
-        <p className='text-center text-lg text-gray-400'>
+        <p className='text-start text-lg text-gray-400'>
           Please login to continue to your account
         </p>
 
@@ -55,12 +55,16 @@ export const SignIn = () => {
         <Input name='username' type='text' className='w-full' />
 
         {/* Password */}
-        <Input name='password' type='text' className='w-full' />
+        <Input name='password' type='password' className='w-full' />
 
-        {/* Keep me logged in feature - Soon */}
+        {/* Keep me logged in feature - TODO */}
+        <label className="flex gap-1 text-gray-300" htmlFor='remember-me'>
+          <input type='checkbox' name='remember-me' id='remember-me' className="accent-lime"/>
+          Remember Me
+        </label>
 
         <button
-          className='flex w-full justify-center text-black font-semibold text-lg border bg-accent hover:bg-slight-accent rounded-xl p-4 cursor-pointer'
+          className='flex w-full justify-center text-black font-semibold text-lg border bg-lime hover:bg-slight-lime rounded-xl p-4 cursor-pointer'
           type='submit'
         >
           Sign in
@@ -68,11 +72,12 @@ export const SignIn = () => {
 
         {/* Navigate to Sign Up */}
         <button
+          type="button"
           onClick={() => navigate('/sign-up')}
           className='text-gray-400 cursor-pointer'
         >
           Need an account?{' '}
-          <span className='text-accent hover:text-slight-accent underline'>
+          <span className='text-lime hover:text-slight-lime underline'>
             Create one!
           </span>
         </button>
@@ -84,7 +89,7 @@ export const SignIn = () => {
       <div className='max-xl:hidden flex flex-1 h-auto'>
         <div className='h-dvh relative p-5'>
           <video
-            className=' object-cover w-full h-full rounded-4xl'
+            className='object-cover w-full h-full rounded-4xl'
             autoPlay
             loop
             muted

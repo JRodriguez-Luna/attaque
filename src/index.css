@@ -9,6 +9,6 @@
   --color-hover: #2C1449;      /* nav hover */
   --color-outline: #4A2D78;    /* avatar ring, subtle edges */
   --color-muted: #A99BC4;      /* secondary text */
-  --color-accent: #95F98A;     /* the lime */
-  --color-slight-accent: #76df6b;
+  --color-lime: #95F98A;     /* the lime */
+  --color-slight-lime: #76df6b; /* darker lime */
 }
