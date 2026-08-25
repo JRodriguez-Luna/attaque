@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router';
+import { Input } from '../components/Input.tsx';
 
 export const SignIn = () => {
   let navigate = useNavigate();
@@ -31,45 +32,77 @@ export const SignIn = () => {
   return (
     <form
       action={handleSubmit}
-      className='flex flex-col justify-center items-center border gap-10 h-dvh'
+      className='flex justify-center items-center bg-panel border h-dvh'
     >
-      <h1 className='text-7xl'>Welcome!</h1>
+      <div className='flex flex-col w-5/6 xl:w-1/4 lg:m-5 p-5 gap-5 text-white'>
+        <div className='flex justify-center items-center px-6 py-7'>
+          <img
+            className='h-auto w-14'
+            src='/attaque-lime.png'
+            alt='attaque logo'
+          />
+          <span className='text-4xl font-semibold text-white'>ttaque</span>
+        </div>
 
-      <div className='flex flex-col border p-4 gap-5'>
+        {/* title */}
+        <h1 className='text-5xl text-lime font-semibold'>Sign in</h1>
+        {/* Motto */}
+        <p className='text-start text-lg text-gray-400'>
+          Please login to continue to your account
+        </p>
+
         {/* Username */}
-        <label htmlFor='username'>Username</label>
-        <input
-          className='border px-1'
-          name='username'
-          id='username'
-          type='text'
-          required
-        />
+        <Input name='username' type='text' className='w-full' />
 
         {/* Password */}
-        <label htmlFor='password'>Password</label>
-        <input
-          className='border px-1'
-          name='password'
-          id='password'
-          type='password'
-          required
-        />
+        <Input name='password' type='password' className='w-full' />
+
+        {/* Keep me logged in feature - TODO */}
+        <label className="flex gap-1 text-gray-300" htmlFor='remember-me'>
+          <input type='checkbox' name='remember-me' id='remember-me' className="accent-lime"/>
+          Remember Me
+        </label>
 
         <button
-          className='border bg-gray-100 hover:bg-gray-300  p-4 cursor-pointer'
+          className='flex w-full justify-center text-black font-semibold text-lg border bg-lime hover:bg-slight-lime rounded-xl p-4 cursor-pointer'
           type='submit'
         >
-          Sign In
+          Sign in
         </button>
 
         {/* Navigate to Sign Up */}
         <button
+          type="button"
           onClick={() => navigate('/sign-up')}
-          className='text-blue-500 hover:text-blue-800 underline cursor-pointer'
+          className='text-gray-400 cursor-pointer'
         >
-          New user? Sign up here!
+          Need an account?{' '}
+          <span className='text-lime hover:text-slight-lime underline'>
+            Create one!
+          </span>
         </button>
+
+        {/* Google Login - Soon */}
+      </div>
+
+      {/* Video portion for 1024px and over - Desktop */}
+      <div className='max-xl:hidden flex flex-1 h-auto'>
+        <div className='h-dvh relative p-5'>
+          <video
+            className='object-cover w-full h-full rounded-4xl'
+            autoPlay
+            loop
+            muted
+            src='/cycling_video.mp4'
+          />
+          <div className=' absolute z-50 left-10 bottom-10 w-19.5 h-auto'>
+            <img
+              className=' w-full h-full'
+              src='/attaque-lime.png'
+              alt='attaque-logo'
+            />
+          </div>
+        </div>
       </div>
     </form>
   );

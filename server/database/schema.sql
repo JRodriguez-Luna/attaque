@@ -7,8 +7,7 @@ CREATE TABLE "users" (
   "username" varchar(50) UNIQUE,
   "email" varchar(50) UNIQUE NOT NULL,
   "password_hash" varchar(255) NOT NULL,
-  "first_name" varchar(100),
-  "last_name" varchar(100),
+  "full_name" varchar(100),
   "updated_at" timestamptz NOT NULL DEFAULT now(),
   "created_at" timestamptz NOT NULL DEFAULT now()
 );
