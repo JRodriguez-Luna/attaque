@@ -100,7 +100,9 @@ export const Rides = () => {
         <RideRow />
 
         {/* View All */}
-        <button type="button" className="text-lime underline items-center">View All</button>
+        <button type='button' className='text-lime underline items-center'>
+          View All
+        </button>
       </div>
 
       {/* Form Module */}

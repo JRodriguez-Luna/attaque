@@ -29,10 +29,10 @@ app.use(cors());
 app.post('/api/auth/sign-up', async (req, res, next) => {
   try {
     // entry from user
-    const { username, email, password, first_name, last_name } = req.body;
+    const { username, email, password, full_name } = req.body;
 
     // if missing required entry, send error
-    if (!username || !email || !password || !first_name || !last_name) {
+    if (!username || !email || !password || !full_name) {
       throw new ClientError(400, 'Invalid or missing entry');
     }
 
@@ -41,13 +41,13 @@ app.post('/api/auth/sign-up', async (req, res, next) => {
 
     // sql script to insert new user
     const sql = `
-      insert into "users" ("username", "email", "password_hash", "first_name", "last_name")
-      values($1, $2, $3, $4, $5)
+      insert into "users" ("username", "email", "password_hash", "full_name")
+      values($1, $2, $3, $4)
       returning "id", "username", "email", "created_at";
     `;
 
     // destructing to put the values in
-    const param = [username, email, password_hash, first_name, last_name];
+    const param = [username, email, password_hash, full_name];
     const [user] = (await db.query(sql, param)).rows;
 
     if (!user) {
@@ -110,12 +110,22 @@ app.post('/api/auth/sign-in', async (req, res, next) => {
 // Inserting
 app.post('/api/rides', authMiddleware, async (req, res, next) => {
   try {
-    const { title, description, distance, avg_speed, avg_power, ride_date } =
-      req.body;
+    const {
+      title,
+      description,
+      distance,
+      avg_speed,
+      avg_power,
+      duration_seconds,
+      elevation_gain,
+      ride_type,
+      ride_date,
+    } = req.body;
 
     if (
       !title ||
       !description ||
+      distance == null ||
       distance < 0 ||
       !avg_speed ||
       !avg_power ||
@@ -125,8 +135,8 @@ app.post('/api/rides', authMiddleware, async (req, res, next) => {
     }
 
     const sql = `
-      insert into rides ("title", "description", "distance", "avg_speed", "avg_power", "ride_date", "user_id")
-      values ($1, $2, $3, $4, $5, $6, $7)
+      insert into rides ("title", "description", "distance", "avg_speed", "avg_power", "duration_seconds", "elevation_gain", "ride_type", "ride_date", "user_id")
+      values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
       returning *;
     `;
 
@@ -137,6 +147,9 @@ app.post('/api/rides', authMiddleware, async (req, res, next) => {
         distance,
         avg_speed,
         avg_power,
+        duration_seconds ?? null,
+        elevation_gain ?? null,
+        ride_type ?? null,
         ride_date,
         req.user?.id,
       ])

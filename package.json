@@ -9,7 +9,8 @@
     "start": "npm run dev & npm run open",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "db:reset": "psql postgresql://localhost:5432/ridelog -f server/database/schema.sql -f server/database/seed.sql"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
