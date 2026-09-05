@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Card } from '../components/Card';
 import { RideForm } from '../components/RideForm';
 import { type Ride } from '../types';
 import { Modal } from './Modal';
+import { Logo } from '../components/Logo';
+import { WeeklyChart } from '../components/WeeklyChart';
 
 export const Rides = () => {
   const [rides, setRides] = useState<Ride[]>([]);
@@ -11,7 +12,7 @@ export const Rides = () => {
   // Add a new ride
   const handleAddRide = (newRide: Ride) => {
     setRides([...rides, newRide]);
-    setIsOpen(false)  //  This will close the modal after submit the new ride
+    setIsOpen(false); //  This will close the modal after submit the new ride
   };
 
   // Close Modal
@@ -48,7 +49,48 @@ export const Rides = () => {
 
   return (
     // Main Section of Content
-    <main className='flex flex-col gap-2 pt-1'>
+    <main className='flex flex-col gap-2 p-5 h-dvh'>
+      <div className='flex justify-center'>
+        <Logo />
+      </div>
+
+      {/* Header */}
+      <h1 className='text-3xl text-white font-semibold'>Rides</h1>
+
+      {/* Description + Add Button */}
+      <div className='flex justify-between items-center'>
+        {/* Grouped Description */}
+        <div className='flex flex-col text-lime'>
+          <p>7 rides</p>
+          <p>2100 miles</p>
+          <p>Since Aug 2025</p>
+        </div>
+
+        {/* Add log Button */}
+        <button
+          className='flex bg-lime items-center rounded-xl px-5 py-2 h-min'
+          type='button'
+        >
+          Add Log
+        </button>
+      </div>
+
+      {/* Chart Streak */}
+      <div className='flex flex-col w-full bg-[#B095FF]/40 bg-opacity font-semibold text-slight-purple  rounded-2xl gap-5 p-3'>
+        {/* title + data display */}
+        <div className='flex justify-between'>
+          {/* Currently week - example */}
+          <p>Aug 23 - 29</p>
+
+          {/* Detaisl - this will swap with the hover affect later. */}
+          <p>Hover a day to see details</p>
+        </div>
+
+        {/* Weekly Chart Component - chart.js */}
+        <WeeklyChart rides={rides} />
+        
+      </div>
+
       {/* Form Module */}
       <Modal isOpen={isOpen} onClose={handleClose}>
         <RideForm onAddRide={handleAddRide} />

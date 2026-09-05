@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Outlet, NavLink } from 'react-router';
 import { Menu, X } from 'lucide-react';
+import { Logo } from './Logo';
 
 const navs = ['Rides', 'Stats', 'Routes', 'Gear', 'Import'];
 
@@ -30,16 +31,7 @@ export const Nav = () => {
           lg:flex lg:w-72 lg:border-r lg:border-border`}
       >
         {/* Logo */}
-        <div className='flex items-center px-6 py-7'>
-          <img
-            className='h-10 w-10'
-            src='/attaque-lime.png'
-            alt='attaque logo'
-          />
-          <span className='text-2xl font-bold text-white'>
-            ttaque
-          </span>
-        </div>
+        <Logo />
 
         {/* Container Section for Navigations */}
         <div className='flex flex-1 flex-col gap-1 px-3'>
