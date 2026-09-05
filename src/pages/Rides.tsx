@@ -3,7 +3,8 @@ import { RideForm } from '../components/RideForm';
 import { type Ride } from '../types';
 import { Modal } from './Modal';
 import { Logo } from '../components/Logo';
-import { WeeklyChart } from '../components/WeeklyChart';
+import { WeeklyChart } from '../components/Rides/WeeklyChart';
+import { RideRow } from '../components/Rides/RideRow';
 
 export const Rides = () => {
   const [rides, setRides] = useState<Ride[]>([]);
@@ -49,7 +50,7 @@ export const Rides = () => {
 
   return (
     // Main Section of Content
-    <main className='flex flex-col gap-2 p-5 h-dvh'>
+    <main className='flex flex-col gap-5 p-5 h-dvh'>
       <div className='flex justify-center'>
         <Logo />
       </div>
@@ -88,7 +89,18 @@ export const Rides = () => {
 
         {/* Weekly Chart Component - chart.js */}
         <WeeklyChart rides={rides} />
-        
+      </div>
+
+      {/* Recent rides */}
+      <div className='flex w-full flex-col gap-5 text-white'>
+        <h4 className='text-lg'>Recent Rides</h4>
+
+        {/* Data - RideRow - Limit 2 then View All button */}
+        <RideRow />
+        <RideRow />
+
+        {/* View All */}
+        <button type="button" className="text-lime underline items-center">View All</button>
       </div>
 
       {/* Form Module */}

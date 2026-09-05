@@ -1,10 +1,11 @@
 import { Chart } from 'chart.js/auto';
 import { useEffect, useRef } from 'react';
-import type { Ride } from '../types';
+import type { Ride } from '../../types';
 
 export const WeeklyChart = ({ rides }: { rides: Ride[] }) => {
   // Chart Props/config
   const ref = useRef<HTMLCanvasElement>(null);
+  const REST_STUB = 1;
 
   // useEffect Chart
   useEffect(() => {
@@ -17,13 +18,13 @@ export const WeeklyChart = ({ rides }: { rides: Ride[] }) => {
         datasets: [
           {
             label: '',
-            data: [10, 20, 0, 60, 23, 0, 0],
+            data: [10, 20, REST_STUB, 60, 23, REST_STUB, REST_STUB],
             backgroundColor: [
+              '#95F98A',
+              '#95F98A',
               '#3D2464',
-              '#3D2464',
-              '#3D2464',
-              '#3D2464',
-              '#3D2464',
+              '#95F98A',
+              '#95F98A',
               '#3D2464',
               '#3D2464',
             ],
