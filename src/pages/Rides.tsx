@@ -50,7 +50,7 @@ export const Rides = () => {
 
   return (
     // Main Section of Content
-    <main className='flex flex-col gap-5 p-5 h-dvh'>
+    <main className='flex flex-col gap-5 p-5 w-full'>
       <div className='flex justify-center'>
         <Logo />
       </div>
@@ -77,7 +77,7 @@ export const Rides = () => {
       </div>
 
       {/* Chart Streak */}
-      <div className='flex flex-col w-full bg-[#B095FF]/40 bg-opacity font-semibold text-slight-purple  rounded-2xl gap-5 p-3'>
+      <div className='flex flex-col w-full bg-slight-purple/40 font-semibold text-slight-purple  rounded-2xl gap-5 p-3'>
         {/* title + data display */}
         <div className='flex justify-between'>
           {/* Currently week - example */}
@@ -96,11 +96,12 @@ export const Rides = () => {
         <h4 className='text-lg'>Recent Rides</h4>
 
         {/* Data - RideRow - Limit 2 then View All button */}
-        <RideRow />
-        <RideRow />
+        {rides.slice(0,4).map((ride) => (
+          <RideRow key={ride.id} ride={ride} />
+        ))}
 
         {/* View All */}
-        <button type='button' className='text-lime underline items-center'>
+        <button type='button' className='text-lime underline'>
           View All
         </button>
       </div>

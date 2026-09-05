@@ -13,3 +13,7 @@
   --color-slight-lime: #76df6b; /* darker lime */
   --color-slight-purple: #B6AED4; /* brighter purple*/
 }
+
+body {
+  background-color: var(--color-surface);
+}

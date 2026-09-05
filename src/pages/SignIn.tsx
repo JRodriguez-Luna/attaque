@@ -32,7 +32,7 @@ export const SignIn = () => {
   return (
     <form
       action={handleSubmit}
-      className='flex justify-center items-center bg-panel border h-dvh'
+      className='flex justify-center items-center bg-panel h-dvh'
     >
       <div className='flex flex-col w-5/6 xl:w-1/4 lg:m-5 p-5 gap-5 text-white'>
         <div className='flex justify-center items-center px-6 py-7'>
@@ -47,7 +47,7 @@ export const SignIn = () => {
         {/* title */}
         <h1 className='text-5xl text-lime font-semibold'>Sign in</h1>
         {/* Motto */}
-        <p className='text-start text-lg text-gray-400'>
+        <p className='text-start text-lg text-muted'>
           Please login to continue to your account
         </p>
 
@@ -58,7 +58,7 @@ export const SignIn = () => {
         <Input name='password' type='password' className='w-full' />
 
         {/* Keep me logged in feature - TODO */}
-        <label className="flex gap-1 text-gray-300" htmlFor='remember-me'>
+        <label className="flex gap-1 text-muted" htmlFor='remember-me'>
           <input type='checkbox' name='remember-me' id='remember-me' className="accent-lime"/>
           Remember Me
         </label>
@@ -74,7 +74,7 @@ export const SignIn = () => {
         <button
           type="button"
           onClick={() => navigate('/sign-up')}
-          className='text-gray-400 cursor-pointer'
+          className='text-muted cursor-pointer'
         >
           Need an account?{' '}
           <span className='text-lime hover:text-slight-lime underline'>
@@ -95,9 +95,9 @@ export const SignIn = () => {
             muted
             src='/cycling_video.mp4'
           />
-          <div className=' absolute z-50 left-10 bottom-10 w-19.5 h-auto'>
+          <div className='absolute z-50 left-10 bottom-10 w-19.5 h-auto'>
             <img
-              className=' w-full h-full'
+              className='w-full h-full'
               src='/attaque-lime.png'
               alt='attaque-logo'
             />

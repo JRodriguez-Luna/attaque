@@ -17,7 +17,7 @@ export const Nav = () => {
         onClick={() => setIsOpen((open) => !open)}
       >
         {isOpen ? (
-          <X className='text-white' />
+          <X className='text-white bg-active rounded' />
         ) : (
           <Menu className='text-white' />
         )}
@@ -60,16 +60,14 @@ export const Nav = () => {
 
           {/* Level & Name */}
           <div>
-            <p className='uppercase text-gray-100 text-xs'>Level 1</p>
+            <p className='uppercase text-muted text-xs'>Level 1</p>
             <p className='text-white text-lg'>Jesus R</p>
           </div>
         </div>
       </nav>
 
       {/* react-router children will appear here - Home, Rides, etc. */}
-      <div className='flex-1'>
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   );
 };

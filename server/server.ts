@@ -158,6 +158,9 @@ app.post('/api/rides', authMiddleware, async (req, res, next) => {
       throw new ClientError(500, `User id ${req.user?.id} does not exists.`);
     }
 
+    // test
+    console.log('rides', rides)
+
     // send status and json
     res.status(201).json(rides);
   } catch (error) {

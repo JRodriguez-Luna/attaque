@@ -12,7 +12,7 @@ export const SignOut = () => {
     <button
       onClick={handleSignOut}
       type='submit'
-      className='border text-center items-center text-base cursor-pointer'
+      className='border text-center text-base cursor-pointer'
     >
       Sign Out
     </button>

@@ -29,7 +29,7 @@ export const SignUp = () => {
   return (
     <form
       action={handleSubmit}
-      className='flex justify-center items-center bg-panel border h-dvh'
+      className='flex justify-center items-center bg-panel h-dvh'
     >
       {/* Video portion for 1024px and over - Desktop */}
       <div className='max-xl:hidden flex flex-1 h-auto'>
@@ -41,9 +41,9 @@ export const SignUp = () => {
             muted
             src='/cycling_video.mp4'
           />
-          <div className=' absolute z-50 left-10 bottom-10 w-19.5 h-auto'>
+          <div className='absolute z-50 left-10 bottom-10 w-19.5 h-auto'>
             <img
-              className=' w-full h-full'
+              className='w-full h-full'
               src='/attaque-lime.png'
               alt='attaque-logo'
             />
@@ -51,10 +51,10 @@ export const SignUp = () => {
         </div>
       </div>
 
-      <div className='flex flex-col w-[90%] xl:w-[25%] lg:m-5 p-5 gap-5 text-white'>
+      <div className='flex flex-col w-5/6 xl:w-1/4 lg:m-5 p-5 gap-5 text-white'>
         <div className='flex justify-center items-center px-6 py-7'>
           <img
-            className='h-auto w-15'
+            className='h-auto w-14'
             src='/attaque-lime.png'
             alt='attaque logo'
           />
@@ -64,7 +64,7 @@ export const SignUp = () => {
         {/* title */}
         <h1 className='text-5xl text-lime font-semibold'>Sign up</h1>
         {/* Motto */}
-        <p className='text-start text-lg text-gray-400'>
+        <p className='text-start text-lg text-muted'>
           Sign up today and enjoy all features of Attaque
         </p>
 
@@ -91,7 +91,7 @@ export const SignUp = () => {
         <button
           type="button"
           onClick={() => navigate('/sign-in')}
-          className='text-gray-400 cursor-pointer'
+          className='text-muted cursor-pointer'
         >
           Already have an account?{' '}
           <span className='text-lime hover:text-slight-lime underline'>
