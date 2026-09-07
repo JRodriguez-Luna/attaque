@@ -5,6 +5,7 @@ import { Modal } from './Modal';
 import { Logo } from '../components/Logo';
 import { WeeklyChart } from '../components/Rides/WeeklyChart';
 import { RideRow } from '../components/Rides/RideRow';
+import { startOfWeek, formatWeekRange } from '../lib/date';
 
 export const Rides = () => {
   const [rides, setRides] = useState<Ride[]>([]);
@@ -80,8 +81,8 @@ export const Rides = () => {
       <div className='flex flex-col w-full bg-slight-purple/40 font-semibold text-slight-purple  rounded-2xl gap-5 p-3'>
         {/* title + data display */}
         <div className='flex justify-between'>
-          {/* Currently week - example */}
-          <p>Aug 23 - 29</p>
+          {/* Currently week */}
+          <p>{formatWeekRange(startOfWeek())}</p>
 
           {/* Detaisl - this will swap with the hover affect later. */}
           <p>Hover a day to see details</p>
