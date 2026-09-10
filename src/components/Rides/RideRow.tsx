@@ -5,14 +5,22 @@ type RideRowProps = {
 };
 
 const getDay = (day: string) => {
-  return new Date(day).getDate()
+  return new Date(day).getDate();
 };
 
 const getMonth = (month: string) => {
-  return new Date(month).toLocaleDateString('default', { month: 'short'})
-}
+  return new Date(month).toLocaleDateString('default', { month: 'short' });
+};
 
 export const RideRow = ({ ride }: RideRowProps) => {
+  let hours;
+  let minutes;
+
+  if (ride.duration_seconds) {
+    hours = Math.floor(ride.duration_seconds / 3600);
+    minutes = (ride.duration_seconds % 3600) / 60;
+  }
+
   return (
     <div className='flex flex-col items-center gap-3 text-lg border-b border-b-border p-2'>
       <div className='flex w-full gap-5'>
@@ -21,7 +29,9 @@ export const RideRow = ({ ride }: RideRowProps) => {
           {/* day */}
           <span className='font-semibold'>{getDay(ride.ride_date)}</span>
           {/* month */}
-          <h5 className='text-sm font-extralight'>{getMonth(ride.ride_date)}</h5>
+          <h5 className='text-sm font-extralight'>
+            {getMonth(ride.ride_date)}
+          </h5>
         </div>
 
         {/* title and Mini Description */}
@@ -31,7 +41,7 @@ export const RideRow = ({ ride }: RideRowProps) => {
             {/* type */}
             <span>{ride.ride_type}</span>
             {/* time */}
-            <span>{ride.duration_seconds}</span>
+            <span>{`${hours}h ${minutes}m`}</span>
             {/* avg. speed */}
             <span>{ride.avg_speed}mph</span>
           </span>

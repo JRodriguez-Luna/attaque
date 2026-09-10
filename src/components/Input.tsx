@@ -45,7 +45,7 @@ export const Input = ({
     >
       <legend
         aria-label={displayLabel}
-        className={`px-1 ${variants[variant].legend} capitalize`}
+        className={`px-1 ${variants[variant].legend} capitalize rounded`}
       >
         {displayLabel}
       </legend>

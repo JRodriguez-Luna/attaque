@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router';
 import type { Ride } from '../types';
+import { Input } from './Input'
 useNavigate;
 
-type RideFormProps = {
+type AddLogFormProps = {
   onAddRide: (newRide: Ride) => void;
 };
 
-export const RideForm = ({ onAddRide }: RideFormProps) => {
+export const AddLogForm = ({ onAddRide }: AddLogFormProps) => {
   let navigate = useNavigate();
 
   const handleActionSubmit = async (formData: FormData) => {
@@ -41,14 +42,13 @@ export const RideForm = ({ onAddRide }: RideFormProps) => {
   return (
     <form
       action={handleActionSubmit}
-      className='flex flex-col justify-center items-center gap-5'
+      className='flex flex-col gap-5 bg-active text-white'
     >
-      <h2>Input here</h2>
+      <h2 className='text-2xl font-semibold'>Add Log</h2>
       {/* title */}
-      <label htmlFor='title'>Title</label>
-      <input className='border' name='title' id='title' type='text' />
+      <Input className='border' name='title' type='text' />
 
-      {/* description */}
+      {/* description --- FIX */}
       <label htmlFor='description'>Description</label>
       <textarea
         className='border'
@@ -58,24 +58,23 @@ export const RideForm = ({ onAddRide }: RideFormProps) => {
       ></textarea>
 
       {/* distance */}
-      <label htmlFor='distance'>Distance</label>
-      <input className='border' name='distance' id='distance' type='text' />
+      <Input className='border' name='distance' type='text' />
 
       {/* avg_speed */}
-      <label htmlFor='avg_speed'>Avg Speed</label>
-      <input className='border' name='avg_speed' id='avg_speed' type='text' />
+      <Input className='border' name='avg_speed' type='text' />
 
       {/* avg_power */}
-      <label htmlFor='avg_power'>Avg Power</label>
-      <input className='border' name='avg_power' id='avg_power' type='number' />
+      <Input className='border' name='avg_power' type='number' />
 
       {/* ride_date */}
-      <label htmlFor='ride_date'>Ride Date</label>
-      <input className='border' name='ride_date' id='ride_date' type='date' />
+      <Input className='border' name='ride_date' type='date' />
 
       {/* Submit Button */}
-      <button className='cursor-pointer border p-4' type='submit'>
-        Submit
+      <button
+        className='cursor-pointer p-4 rounded-xl text-active bg-lime'
+        type='submit'
+      >
+        Save
       </button>
     </form>
   );

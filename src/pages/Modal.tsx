@@ -1,4 +1,5 @@
 import { useEffect, useRef, type ReactNode } from 'react';
+import { X } from 'lucide-react';
 
 type ModalProps = {
   children: ReactNode;
@@ -25,10 +26,12 @@ export const Modal = ({ children, isOpen, onClose }: ModalProps) => {
     // m-auto centers the dialog — <dialog> normally centers itself with margin: auto,
     // but Tailwind's Preflight resets margins to 0, so we restore it.
     <dialog
-      className='m-auto rounded-lg p-6 bg-white backdrop:bg-black/50'
-      onClose={onClose}
+      className='m-auto rounded-lg relative p-6 bg-active border-muted border-2 backdrop:bg-black/50'
+      onClose={onClose} // Esc
       ref={modal}
     >
+      {/* Visual Cancellation */}
+      <X onClick={onClose} className="absolute right-5 text-red-500"/>
       {children}
     </dialog>
   );

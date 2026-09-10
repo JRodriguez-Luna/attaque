@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { RideForm } from '../components/RideForm';
+import { AddLogForm } from '../components/AddLogForm';
 import { type Ride } from '../types';
 import { Modal } from './Modal';
 import { Logo } from '../components/Logo';
@@ -68,10 +68,11 @@ export const Rides = () => {
           <p>Since Aug 2025</p>
         </div>
 
-        {/* Add log Button */}
+        {/* Add log Button -  */}
         <button
           className='flex bg-lime items-center rounded-xl px-5 py-2 h-min'
           type='button'
+          onClick={() => setIsOpen(true)}
         >
           Add Log
         </button>
@@ -109,7 +110,7 @@ export const Rides = () => {
 
       {/* Form Module */}
       <Modal isOpen={isOpen} onClose={handleClose}>
-        <RideForm onAddRide={handleAddRide} />
+        <AddLogForm onAddRide={handleAddRide} />
       </Modal>
     </main>
   );
