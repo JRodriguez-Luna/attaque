@@ -49,6 +49,12 @@ export const Rides = () => {
     fetchRides();
   }, []);
 
+  // Get total miles
+  let totalMiles: number = 0;
+  rides.forEach((r) => {
+    totalMiles += Number(r.distance)
+  })
+
   return (
     // Main Section of Content
     <main className='flex flex-col gap-5 p-5 w-full'>
@@ -63,9 +69,8 @@ export const Rides = () => {
       <div className='flex justify-between items-center'>
         {/* Grouped Description */}
         <div className='flex flex-col text-lime'>
-          <p>7 rides</p>
-          <p>2100 miles</p>
-          <p>Since Aug 2025</p>
+          <p  className="text-base">{rides.length} rides</p>
+          <p className="text-base">{totalMiles} miles</p>
         </div>
 
         {/* Add log Button -  */}
@@ -97,7 +102,7 @@ export const Rides = () => {
       <div className='flex w-full flex-col gap-5 text-white'>
         <h4 className='text-lg'>Recent Rides</h4>
 
-        {/* Data - RideRow - Limit 2 then View All button */}
+        {/* Data - RideRow - Limit 4 then View All button */}
         {rides.slice(0,4).map((ride) => (
           <RideRow key={ride.id} ride={ride} />
         ))}
