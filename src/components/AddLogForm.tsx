@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
 import type { Ride } from '../types';
-import { Input } from './Input'
+import { Input } from './Input';
 useNavigate;
 
 type AddLogFormProps = {
@@ -49,13 +49,7 @@ export const AddLogForm = ({ onAddRide }: AddLogFormProps) => {
       <Input className='border' name='title' type='text' />
 
       {/* description --- FIX */}
-      <label htmlFor='description'>Description</label>
-      <textarea
-        className='border'
-        name='description'
-        maxLength={50}
-        id='description'
-      ></textarea>
+      <Input className='border' name='description' type='textarea' />
 
       {/* distance */}
       <Input className='border' name='distance' type='text' />

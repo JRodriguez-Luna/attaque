@@ -18,13 +18,13 @@ const variants: Record<
   }
 > = {
   primary: {
-    border: 'border-lime',
-    legend: 'bg-lime text-black',
+    border: 'focus-within:border-lime',
+    legend: 'group-focus-within:bg-lime group-focus-within:text-black',
   },
   // Fix Secondary
   secondary: {
-    border: 'border-lime',
-    legend: 'bg-lime text-black',
+    border: 'focus-within:border-lime',
+    legend: 'group-focus-within:bg-lime group-focus-within:text-black',
   },
 };
 
@@ -41,22 +41,31 @@ export const Input = ({
 
   return (
     <fieldset
-      className={`p-2 border rounded-xl ${variants[variant].border} ${className}`}
+      className={`group p-2 border rounded-xl text-white ${variants[variant].border} ${className}`}
     >
       <legend
         aria-label={displayLabel}
-        className={`px-1 ${variants[variant].legend} capitalize rounded`}
+        className={`px-1 text-white capitalize rounded ${variants[variant].legend}`}
       >
         {displayLabel}
       </legend>
-      <input
-        className='px-1 focus:outline-none'
-        name={name}
-        id={name}
-        type={type}
-        required={required}
-        placeholder={placeholder}
-      />
+      {type === 'textarea' ? (
+        <textarea
+          className='px-1 focus:outline-none'
+          name={name}
+          maxLength={50}
+          id={name}
+        ></textarea>
+      ) : (
+        <input
+          className='px-1 focus:outline-none'
+          name={name}
+          id={name}
+          type={type}
+          required={required}
+          placeholder={placeholder}
+        />
+      )}
     </fieldset>
   );
 };
